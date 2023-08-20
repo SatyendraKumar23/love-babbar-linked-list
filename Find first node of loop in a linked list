@@ -1,0 +1,50 @@
+
+/* class Node
+{
+    int data;
+    Node next;
+    
+    Node(int x)
+    {
+        data = x;
+        next = null;
+    }
+}*/
+
+class Solution {
+    //Function to find first node if the linked list has a loop.
+    public static int findFirstNode(Node head){
+        
+        boolean cycle=false;
+        
+        Node slow=head;
+        Node fast=head;
+        
+        while(fast!=null&&fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            
+            if(slow==fast)
+            {
+                cycle=true;
+                break;
+            }
+        }
+        if(cycle==false)
+        {
+            return -1;
+        }
+        
+        slow=head;
+        
+        while(slow!=fast)
+        {
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow.data;
+        
+        //code here
+    }
+}
