@@ -1,0 +1,16 @@
+void moveToFront()
+	{
+		/* If linked list is empty or it contains only
+		one node then simply return. */
+		if (head == null || head.next == null)
+			return;
+      Node curr=head;
+      while(curr.next.next!=null){
+        curr=curr.next;
+      }
+      Node newnode=curr.next;
+      curr.next=null;
+      
+      newnode.next=head;
+      head=newnode;
+}
